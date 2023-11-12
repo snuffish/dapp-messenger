@@ -42,3 +42,6 @@ Still an early proof-of-concept and and heavlity Work-in-Progress solution.
 * Send message: `npx hardhat sendMessage <receiver:address> <message:string>`
 * Get Message: `npx hardhat getMessages <from:address>`
 
+----------------------------------------------------------------
+
+***This is powered by Hardhart***
