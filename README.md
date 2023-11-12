@@ -7,6 +7,8 @@ Still an early proof-of-concept and and heavlity Work-in-Progress solution.
 ### Requirements (recommended versions)
 
 * node: `v20.8.0`
+* npx: `8.19.4`
+* hardhat: `2.19.0`
 * nvm: `0.39.5`
 * solidity: `^0.8.9`
 
