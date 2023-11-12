@@ -14,7 +14,7 @@ Still an early proof-of-concept and and heavlity Work-in-Progress solution.
 
 ## Project Setup
 
-### Setup the Blockchain ind it's associated Smart Contracts etc
+### Setup the Blockchain and it's associated Smart Contracts etc
 
 ##### Clone the repo and install everything following these steps:
 
