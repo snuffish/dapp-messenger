@@ -1,3 +1,42 @@
 # dApp Messenger
 
 This is a messenger chat application/protocol built for the EVM Compatible Blockchains.
+
+Still an early proof-of-concept and and heavlity Work-in-Progress solution.
+
+### Requirements (recommended versions)
+
+* node: `v20.8.0`
+* nvm: `0.39.5`
+* solidity: `^0.8.9`
+
+## Project Setup
+
+### Setup the Blockchain ind it's associated Smart Contracts etc
+
+##### Clone the repo and install everything following these steps:
+
+* Clone repo: `git clone https://github.com/snuffish/dapp-messenger.git` 
+* `cd dapp-messenger`
+* `nvm use` ==> Now using node v20.8.0 (npm v10.2.1)
+* `nvm install`
+* `npm start` ==> Start the blockchain node
+* `npm tesat` ==> Run all tests for errors etc before deploying
+* `npm run deploy` ==> Deploy all the Project & Contracts on the Chain
+
+#### Setup and run the frontend (Ether.js) dApp Application
+
+* `cd frontend`
+* `nvm use` ==>  Now using node v20.8.0 (npm v10.2.1)
+* `nvm install`
+* `npm start` ==> Start the WebBased Ether.js dApp
+
+----------------------------------------------------------------
+
+### Additional hardhat tasks
+
+* Transfer/add a faucet to an account: `npx hardhat faucet <receiver:address>`
+* List all accounts: `npx hardhat accounts`
+* Send message: `npx hardhat sendMessage <receiver:address> <message:string>`
+* Get Message: `npx hardhat getMessages <from:address>`
+

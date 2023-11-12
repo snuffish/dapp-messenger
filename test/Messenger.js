@@ -40,12 +40,9 @@ describe('Messenger contract', () => {
             expect(message).to.not.be.reverted
         })
 
-        it('Received MessageSent event', async () => {
-            const tx = await message.wait()
-            const event = tx.events.filter(e => e.event === 'MessageSent').pop()
-
-            expect(event.args['_from']).to.be.equal(addr1.address)
-            expect(event.args['_to']).to.be.equal(addr2.address)
+        it('Send message and expect emitted event "MessageSent" event', async () => {
+            await expect(contract.connect(addr1).sendMessage(addr2.address, textMessage))
+                .to.emit(contract, 'MessageSent').withArgs(addr1.address, addr2.address)
         })
     })
 

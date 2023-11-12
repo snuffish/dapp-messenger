@@ -1,22 +1,18 @@
 {
-  "name": "hardhat-boilerplate",
+  "name": "dapp-messenger",
   "version": "1.0.0",
-  "description": "A boilerplate repository to get you started with Hardhat and Ethereum development",
+  "description": "This is a (EVM) Blockchain chat/communication software and protocol",
   "scripts": {
     "test": "hardhat test",
     "start": "hardhat node",
-    "deploy": "hardhat run scripts/deploy.js --network localhost"
+    "deploy": "hardhat run scripts/deploy.js --network localhost",
+    "faucet": "hardhat faucet"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NomicFoundation/hardhat-boilerplate.git"
+    "type": "git"
   },
-  "author": "Nomic Foundation",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/NomicFoundation/hardhat-boilerplate/issues"
-  },
-  "homepage": "https://github.com/NomicFoundation/hardhat-boilerplate#readme",
+  "author": "Snuffish",
+  "homepage": "https://github.com/snuffish/dapp-messenger/blob/master/README.md",
   "devDependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
