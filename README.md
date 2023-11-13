@@ -23,7 +23,7 @@ Still an early proof-of-concept and and heavlity Work-in-Progress solution.
 * `nvm use` ==> Now using node v20.8.0 (npm v10.2.1)
 * `nvm install`
 * `npm start` ==> Start the blockchain node
-* `npm tesat` ==> Run all tests for errors etc before deploying
+* `npm test` ==> Run all tests for errors etc before deploying
 * `npm run deploy` ==> Deploy all the Project & Contracts on the Chain
 
 #### Setup and run the frontend (Ether.js) dApp Application
