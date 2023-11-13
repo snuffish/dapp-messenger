@@ -24,7 +24,7 @@ Still an early proof-of-concept and and heavlity Work-in-Progress solution.
 * `nvm install`
 * `npm start` ==> Start the blockchain node
 * `npm test` ==> Run all tests for errors etc before deploying
-* `npm run deploy` ==> Deploy all the Project & Contracts on the Chain
+* `npm run deploy` ==> Compile and deploy the Project & Contracts on to the chain
 
 #### Setup and run the frontend (Ether.js) dApp Application
 
