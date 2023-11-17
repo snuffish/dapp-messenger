@@ -1,25 +1,42 @@
-import { ethers } from 'ethers';
-import './App.css';
-import ConnectWallet from './components/ConnectWallet';
-import { useContext } from 'react';
-import { AppStateContext } from '.';
-import Chat from './components/Chat';
+import { useAccount } from 'wagmi'
 
-function App() {
-  const { signer } = useContext(AppStateContext)
+import { Account } from './components/@backup/Account'
+import { Balance } from './components/@backup/Balance'
+import { BlockNumber } from './components/@backup/BlockNumber'
+import { Connect } from './components/Connect'
+import { NetworkSwitcher } from './components/@backup/NetworkSwitcher'
+import { ReadContract } from './components/@backup/ReadContract'
+import { ReadContracts } from './components/@backup/ReadContracts'
+import { ReadContractsInfinite } from './components/@backup/ReadContractsInfinite'
+import { SendTransaction } from './components/@backup/SendTransaction'
+import { SendTransactionPrepared } from './components/@backup/SendTransactionPrepared'
+import { SignMessage } from './components/@backup/SignMessage'
+import { SignTypedData } from './components/@backup/SignTypedData'
+import { Token } from './components/@backup/Token'
+import { WatchContractEvents } from './components/@backup/WatchContractEvents'
+import { WatchPendingTransactions } from './components/@backup/WatchPendingTransactions'
+import { WriteContract } from './components/@backup/WriteContract'
+import { WriteContractPrepared } from './components/@backup/WriteContractPrepared'
+import SendMessage from './components/SendMessage'
+import MessageInbox from './components/MessageInbox'
 
-  console.log("ADDR",ethers.getAddress('0x9cFB7df745c81da84489E1D7f2408989159f6990'))
+export function App() {
+  const { isConnected } = useAccount()
 
   return (
-    <div className="App">
-      <body>
-        <div className="App-Container">
-          {signer.value.address && <Chat/>}
-          {!signer.value.address && <ConnectWallet/>}
-        </div>
-      </body>
-    </div>
-  );
-}
+    <>
+      <h1>Messenger</h1>
 
-export default App;
+      <Connect />
+      <br/>
+
+      {isConnected && (
+        <>
+          <SendMessage/>
+          <br/><br/><br/><br/>
+          <MessageInbox/>
+        </>
+      )}
+    </>
+  )
+}

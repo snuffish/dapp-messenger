@@ -1,4 +1,6 @@
-const fs = require("fs");
+// @ts-nocheck
+// const fs = require("fs");
+import fs from 'fs'
 
 // This file is only here to make interacting with the Dapp easier,
 // feel free to ignore it if you don't need it.
@@ -9,8 +11,8 @@ task("faucet", "Sends ETH and tokens to an address")
     if (network.name === "hardhat") {
       console.warn(
         "You are running the faucet task with Hardhat network, which" +
-          "gets automatically created and destroyed every time. Use the Hardhat" +
-          " option '--network localhost'"
+        "gets automatically created and destroyed every time. Use the Hardhat" +
+        " option '--network localhost'"
       );
     }
 
@@ -44,3 +46,5 @@ task("faucet", "Sends ETH and tokens to an address")
 
     console.log(`Transferred 1 ETH and 100 tokens to ${receiver}`);
   });
+
+export default {}
