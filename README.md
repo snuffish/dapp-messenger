@@ -14,7 +14,7 @@ Still an early proof-of-concept and and heavlity Work-in-Progress solution.
 
 ## Project Setup
 
-### Setup the Blockchain ind it's associated Smart Contracts etc
+### Setup the Blockchain and it's associated Smart Contracts etc
 
 ##### Clone the repo and install everything following these steps:
 
@@ -23,8 +23,8 @@ Still an early proof-of-concept and and heavlity Work-in-Progress solution.
 * `nvm use` ==> Now using node v20.8.0 (npm v10.2.1)
 * `nvm install`
 * `npm start` ==> Start the blockchain node
-* `npm tesat` ==> Run all tests for errors etc before deploying
-* `npm run deploy` ==> Deploy all the Project & Contracts on the Chain
+* `npm test` ==> Run all tests for errors etc before deploying
+* `npm run deploy` ==> Compile and deploy the Project & Contracts on to the chain
 
 #### Setup and run the frontend (Ether.js) dApp Application
 
