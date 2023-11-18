@@ -5,7 +5,7 @@
   "scripts": {
     "test": "hardhat test",
     "start": "hardhat node",
-    "deploy": "hardhat run scripts/deploy.js --network localhost",
+    "deploy": "hardhat run scripts/deploy.ts --network localhost",
     "faucet": "hardhat faucet"
   },
   "repository": {

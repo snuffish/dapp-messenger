@@ -10,34 +10,32 @@ struct Message {
 }
 
 contract Messenger {
-    address private owner;
+    address public owner;
 
     modifier onlyOwner {
         require(msg.sender == owner, 'caller must be owner');
         _;
     }
 
-    event MessageSent(address indexed _from, address indexed _to);
+    event MessageSent(address indexed from, address indexed to, uint messageId);
 
-    mapping(address => Message[]) public messages;
+    uint private messageId = 0;
+    mapping(uint => Message) public messages;
 
     constructor() {
         owner = msg.sender;
     }
 
-    function getOwner() external view returns(address) {
-        return owner;
-    }
-
-    function sendMessage(address _to, string memory _text) external {        
+    function sendMessage(address _to, string memory _text) external {
+        messageId++;
         Message memory newMessage = Message(msg.sender, _text);
-        messages[_to].push(newMessage);
+        messages[messageId] = newMessage;
 
-        emit MessageSent(msg.sender, _to);
+        emit MessageSent(msg.sender, _to, messageId);
     }
 
-    function getMessages() public view returns(Message[] memory) {
-        return messages[msg.sender];
+    function getMessages(uint messageId) public view returns(Message memory) {
+        return messages[messageId];
     }
 
     function destroy() external onlyOwner {

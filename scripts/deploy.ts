@@ -1,28 +1,35 @@
-// This is a script for deploying your contracts. You can adapt it to deploy
-// yours, or create new ones.
+import { Contract } from "ethers"
+import { ethers, network } from "hardhat"
+import path from 'path'
 
-const path = require("path");
-
-const deployToken = async (deployer) => {
-  console.log("Account balance:", (await deployer.getBalance()).toString());
-
-  const Token = await ethers.getContractFactory("Token");
-  const token = await Token.deploy();
-  await token.deployed();
-
-  console.log("Token address:", token.address);
-
-  return token
+type ContractConfig = {
+  [key: string]: {
+    args: any[]
+  }
 }
 
-const deployMessenger = async (deployer) => {
-  const Messenger = await ethers.getContractFactory('Messenger')
-  const messenger = await Messenger.deploy()
-  await messenger.deployed()
+type DeployedContract = [string, Contract]
 
-  console.log("Messenger address:", messenger.address)
+const ContractsConfig: ContractConfig = {
+  Token: {
+    args: []
+  },
+  Messenger: {
+    args: []
+  },
+  Friends: {
+    args: ['HEJKUKBVAJSDIF']
+  }
+}
 
-  return messenger
+const deployContract = async (name: string, args: any[]): Promise<DeployedContract> => {
+  const ContractFactory = await ethers.getContractFactory(name)
+  const contract = await ContractFactory.deploy(...args)
+  await contract.deployed()
+
+  console.log(`${name} address: ${contract.address}`)
+
+  return [name, contract]
 }
 
 async function main() {
@@ -38,23 +45,18 @@ async function main() {
   // ethers is available in the global scope
   const [deployer] = await ethers.getSigners();
 
-  console.log(
-    "Deploying the contracts with the account:",
-    await deployer.getAddress()
-  );
+  console.log("Deploying the contracts with the account:", await deployer.getAddress())
 
-  const token = await deployToken(deployer)
-  const messenger = await deployMessenger(deployer)
+  let deployedContracts: DeployedContract[] = []
+  for (const [name, params] of Object.entries(ContractsConfig)) {
+    const deployed = await deployContract(name, params.args)
+    deployedContracts.push(deployed)
+  }
 
-
-  // We also save the contract's artifacts and address in the frontend directory
-  saveFrontendFiles([
-    ['Token', token],
-    ['Messenger', messenger]
-  ]);
+  saveFrontendFiles(deployedContracts);
 }
 
-function saveFrontendFiles(data) {
+function saveFrontendFiles(data: DeployedContract[]) {
   const fs = require("fs");
   const contractsDir = path.join(__dirname, "..", "frontend", "src", "contracts");
 

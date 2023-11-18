@@ -18,6 +18,11 @@ task('sendMessage', 'Send message')
     // console.log(await contract.read.sendMessage(to, message))
 })
 
+task('friends', async () => {
+    const contract = await hre.viem.getContractAt('Friends', contractAddress.Friends)
+    console.log(await contract.read.getName())
+})
+
 
 
 export default {}

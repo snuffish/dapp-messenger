@@ -15,7 +15,7 @@ const MessageInbox = () => {
 
     return (
         <>
-            XXX
+            INBOX
         </>
     )
 }
