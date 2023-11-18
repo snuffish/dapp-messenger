@@ -7,8 +7,8 @@ import "hardhat/console.sol";
  contract Friends {
     string private name;
 
-    constructor(string memory _name) {
-        name = _name;
+    constructor() {
+
     }
 
     function getName() public view returns (string memory) {

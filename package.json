@@ -30,6 +30,7 @@
     "viem": "^1.19.1"
   },
   "dependencies": {
+    "@openzeppelin/contracts": "^5.0.0",
     "@type_of/use-wagmi-contracts": "^0.0.12",
     "@wagmi/connectors": "^3.1.4"
   }

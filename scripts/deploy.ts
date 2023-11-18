@@ -11,6 +11,9 @@ type ContractConfig = {
 type DeployedContract = [string, Contract]
 
 const ContractsConfig: ContractConfig = {
+  Application: {
+    args: []
+  },
   Token: {
     args: []
   },
@@ -18,12 +21,13 @@ const ContractsConfig: ContractConfig = {
     args: []
   },
   Friends: {
-    args: ['HEJKUKBVAJSDIF']
+    args: []
   }
 }
 
 const deployContract = async (name: string, args: any[]): Promise<DeployedContract> => {
   const ContractFactory = await ethers.getContractFactory(name)
+  // const contract = args.length > 0 ? await ContractFactory.deploy(...args) : await ContractFactory.deploy()
   const contract = await ContractFactory.deploy(...args)
   await contract.deployed()
 
