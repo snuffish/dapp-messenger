@@ -1,19 +1,25 @@
 import { useAccount, useContractEvent } from "wagmi"
 import contractAddress from '../contracts/contract-address.json'
-import Messenger from '../contracts/Messenger.json'
-import { useState } from "react"
+import Application from '../contracts/Application.json'
+import { useEffect, useState } from "react"
+import useMessage from "../hooks/useMessage"
 
 const MessageInbox = () => {
     const { address } = useAccount()
-    const [] = useState()
+    // const [] = useState()
+    const { data } = useMessage(1);
+
+    useEffect(() => {
+        console.log("=>>",data)
+    }, [])
 
     const addMessage = (messageId: number) => {
         console.log("ADD=>>", messageId)
     }
 
     useContractEvent({
-        address: contractAddress.Messenger as any,
-        abi: Messenger.abi,
+        address: contractAddress.Application as any,
+        abi: Application.abi,
         eventName: 'MessageSent',
         listener: (log) => {
             log.filter(({ args }: any) => args.to == address || args.from == address)

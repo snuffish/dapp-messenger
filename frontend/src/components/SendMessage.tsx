@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useContractRead, useContractWrite } from "wagmi"
 import contractAddress from '../contracts/contract-address.json'
-import Messenger from '../contracts/Messenger.json'
+import Application from '../contracts/Application.json'
 import { Button } from "@mui/material"
 
 const SendMessage = () => {
@@ -9,8 +9,8 @@ const SendMessage = () => {
     const [message, setMessage] = useState('Testar lite')
 
     const { write, data, isIdle, isLoading, isSuccess } = useContractWrite({
-        address: contractAddress.Messenger as any,
-        abi: Messenger.abi,
+        address: contractAddress.Application as any,
+        abi: Application.abi,
         functionName: 'sendMessage'
     })
 

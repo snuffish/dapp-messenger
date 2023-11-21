@@ -1,7 +1,7 @@
-// @ts-nocheck
+
 import { loadFixture } from '@nomicfoundation/hardhat-network-helpers'
 import { expect } from 'chai';
-import { run } from 'hardhat';
+import { ethers, run } from 'hardhat';
 
 const deployContractFixture = async () => {
     const Application = await ethers.getContractFactory('Application');
