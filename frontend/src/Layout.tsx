@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Connect } from "./components/Connect";
 import Account from "./components/Account";
+import ChatWindow from "./components/ChatWindow";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -31,7 +32,9 @@ const Layout = ({ children }: any): JSX.Element => {
                 <Item>Friend list</Item>
             </Grid>
             <Grid item xs={7}>
-                <Item>Chat window</Item>
+                <Item>
+                    <ChatWindow/>
+                </Item>
             </Grid>
             <Grid item xs={2}>
                 <Item>Right panel</Item>

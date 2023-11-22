@@ -16,5 +16,7 @@ export type { Friends } from "./contracts/Friends";
 export { Friends__factory } from "./factories/contracts/Friends__factory";
 export type { Message } from "./contracts/Message";
 export { Message__factory } from "./factories/contracts/Message__factory";
+export type { Messenger } from "./contracts/Messenger";
+export { Messenger__factory } from "./factories/contracts/Messenger__factory";
 export type { Token } from "./contracts/Token";
 export { Token__factory } from "./factories/contracts/Token__factory";

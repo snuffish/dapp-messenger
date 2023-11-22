@@ -5,7 +5,7 @@ const Account = () => {
 
     if (isConnected) {
         return (
-            <>Connected with wallet ${address}</>
+            <>Connected with wallet {address}</>
         )
     }
 
