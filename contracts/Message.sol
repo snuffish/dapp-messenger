@@ -14,14 +14,14 @@ contract Message {
 
     event MessageSent(address indexed from, address indexed to, string message);
 
-    function sendMessage(address to, string memory message) public {
-        messageCount++;
-        messages[messageCount] = Message(msg.sender, to, message);
+    // function sendMessage(address to, string memory message) public {
+    //     messageCount++;
+    //     messages[messageCount] = Message(msg.sender, to, message);
 
-        emit MessageSent(to, msg.sender, message);
-    }
+    //     emit MessageSent(to, msg.sender, message);
+    // }
 
-    function getMessage(uint256 id) public view returns (Message memory) {
-        return messages[id];
-    }
+    // function getMessage(uint256 id) public view returns (Message memory) {
+    //     return messages[id];
+    // }
 } 

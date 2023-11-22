@@ -6,8 +6,6 @@ import '@nomicfoundation/hardhat-toolbox'
 import '@nomicfoundation/hardhat-chai-matchers'
 import "@nomicfoundation/hardhat-viem"
 
-// import contractAddress from './frontend/src/contracts/contract-address.json'
-
 import './tasks'
 
 // require("./tasks/faucet");

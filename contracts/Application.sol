@@ -8,12 +8,12 @@ import { User } from "./User.sol";
 import { Message } from  "./Message.sol";
 
 
-abstract contract ApplicationBase is Ownable, User, Message {
+contract Application is Ownable, User, Message {
 
     mapping(address => uint256[]) private userMessages;
    
     constructor(address initOwner) Ownable(initOwner) {
-        // console.log()<
+        // console.log()
     }
 
     function destroy() external onlyOwner {

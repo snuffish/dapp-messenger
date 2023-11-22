@@ -1,5 +1,6 @@
 import { Contract } from "ethers"
 import { ethers, network } from "hardhat"
+import fs from 'fs'
 import path from 'path'
 
 type ContractConfig = {
@@ -11,15 +12,18 @@ type ContractConfig = {
 type DeployedContract = [string, Contract]
 
 const ContractsConfig: ContractConfig = {
-  Application: {
-    args: ['0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266']
-  },
-  Token: {
-    args: []
-  },
-  Friends: {
+  Messenger: {
     args: []
   }
+  // Application: {
+  //   args: []
+  // },
+  // Token: {
+  //   args: []
+  // },
+  // Friends: {
+  //   args: []
+  // }
 }
 
 const deployContract = async (name: string, args: any[]): Promise<DeployedContract> => {
@@ -57,7 +61,6 @@ async function main() {
 }
 
 function saveFrontendFiles(data: DeployedContract[]) {
-  const fs = require("fs");
   const contractsDir = path.join(__dirname, "..", "frontend", "src", "contracts");
 
   if (!fs.existsSync(contractsDir)) {

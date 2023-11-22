@@ -12,17 +12,17 @@ contract User {
     address private addr;
     string private username;
 
-    constructor(address _addr, string memory _username) {
-        addr = _addr;
-        username = _username;
-    }
+    // constructor(address _addr, string memory _username) {
+    //     addr = _addr;
+    //     username = _username;
+    // }
 
-     function createUser(string memory username) public {
-        // for (uint i = 0; i < userCount; i++) {
-        //     if (users[i].username == username) {
+    //  function createUser(string memory username) public {
+    //     // for (uint i = 0; i < userCount; i++) {
+    //     //     if (users[i].username == username) {
 
-        //     }
-        // }
-        // require();
-    }
+    //     //     }
+    //     // }
+    //     // require();
+    // }
 }
