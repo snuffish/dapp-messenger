@@ -24,7 +24,7 @@ contract Messenger is Ownable {
 
     event MessageSent(address indexed from, address indexed to);
 
-    mapping(address => User) users;
+    mapping(address => User) private users;
     mapping(bytes32 => Message[]) private userMessages;
 
     constructor() Ownable(msg.sender) { }
@@ -43,7 +43,7 @@ contract Messenger is Ownable {
     }
 
     function getMessages(address friendKey) external view returns (Message[] memory messages) {
-        bytes32 chatCode = _getChatCode(msg.sender, friendKey);
+        bytes32 chatCode = _getChatCode(0x9cFB7df745c81da84489E1D7f2408989159f6990, friendKey);
 
         return userMessages[chatCode];
     }

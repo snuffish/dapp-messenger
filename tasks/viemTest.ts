@@ -8,15 +8,15 @@ task('getMessages', 'Get messages')
     console.log(await contract.read.getMessages())
 })
 
-task('sendMessage', 'Send message')
-.addPositionalParam('to', 'To address')
-.addPositionalParam('message', 'Message')
-.setAction(async ({ to, message }) => {
-    const contract = await hre.viem.getContractAt('Messenger', contractAddress.Messenger)
-    console.log(await contract.write.sendMessage([to, message]))
+// task('sendMessage', 'Send message')
+// .addPositionalParam('to', 'To address')
+// .addPositionalParam('message', 'Message')
+// .setAction(async ({ to, message }) => {
+//     const contract = await hre.viem.getContractAt('Messenger', contractAddress.Messenger)
+//     console.log(await contract.write.sendMessage([to, message]))
 
-    // console.log(await contract.read.sendMessage(to, message))
-})
+//     // console.log(await contract.read.sendMessage(to, message))
+// })
 
 task('friends', async () => {
     const contract = await hre.viem.getContractAt('Friends', contractAddress.Friends)

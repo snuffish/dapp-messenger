@@ -70,7 +70,7 @@ function saveFrontendFiles(data: DeployedContract[]) {
   let contactAddressJson = {}
   for (const [name, contract] of data) {
     contactAddressJson = {
-      [name]: contract.address,
+      [`${name}Address`]: contract.address,
       ...contactAddressJson
     }
 
