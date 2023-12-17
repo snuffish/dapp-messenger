@@ -1,6 +1,6 @@
 import { MessageInput } from "@minchat/react-chat-ui"
 import Messenger from '../../contracts/Messenger.json'
-import { MessengerAddress } from '../../contracts/contract-address.json'
+import ContractAddress from '../../contracts/contract-address.json'
 
 import { useAccount, useContractWrite } from "wagmi"
 import { friendKey } from '.'
@@ -13,10 +13,10 @@ const SendMessage = () => {
     const [message, setMessage] = useState('')
 
     const { write, isLoading, error } = useContractWrite({
-        address: MessengerAddress as any,
+        address: ContractAddress.MessengerAddress as any,
         abi: Messenger.abi,
         functionName: 'sendMessage',
-        args: [friendKey, message]
+        args: [friendKey.value, message]
     })
 
     const onSubmit = () => {
@@ -26,7 +26,7 @@ const SendMessage = () => {
     if (error) {
         return (
             <>
-                {/* FEL: {{error}}ˇ */}
+                FEL!
             </>
         )
     }

@@ -21,7 +21,6 @@ struct Message {
 }
 
 contract Messenger is Ownable {
-
     event MessageSent(address indexed from, address indexed to);
 
     mapping(address => User) private users;
@@ -30,6 +29,7 @@ contract Messenger is Ownable {
     constructor() Ownable(msg.sender) { }
 
     function sendMessage(address to, string memory _msg) external {
+
         Message memory message = Message(msg.sender, block.timestamp, _msg);
         bytes32 chatCode = _getChatCode(msg.sender, to);
 
@@ -54,4 +54,3 @@ contract Messenger is Ownable {
         return keccak256(pubkey1 < pubkey2 ? abi.encodePacked(pubkey1, pubkey2) : abi.encodePacked(pubkey2, pubkey1));
     }
 }
- 

@@ -1,4 +1,4 @@
-import { useAccount } from "wagmi"
+import {useAccount} from "wagmi";
 
 const Account = () => {
     const { isConnected, address } = useAccount()
