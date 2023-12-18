@@ -25,4 +25,7 @@ task('addFriend', 'Add friend')
     console.log(tx)
 })
 
+
+
+
 export default {} 

@@ -3,7 +3,7 @@ import { BaseError } from 'viem'
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
 
 export function Connect() {
-  const { connector, isConnected } = useAccount()
+  const { address, connector, isConnected } = useAccount()
   const { connect, connectors, error, isLoading, pendingConnector } = useConnect()
   const { disconnect } = useDisconnect()
 

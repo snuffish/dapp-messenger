@@ -1,18 +1,13 @@
 import {useAccount} from "wagmi";
+import { Connected } from "./Connected";
 
 const Account = () => {
-    const { isConnected, address } = useAccount()
-
-    if (isConnected) {
-        return (
-            <>Connected with wallet {address}</>
-        )
-    }
+    const { address } = useAccount()
 
     return (
-        <b>
-            No connection
-        </b>
+        <Connected>
+            <span>Connected with wallet {address}</span>
+        </Connected>
     )
 }
 

@@ -49,26 +49,29 @@ contract Messenger is Ownable {
         users[msg.sender].friends.push(friend);
     }
 
-    function getFriends() external view returns (Friend[] memory) {
+    function getFriends() external view returns (Friend[] memory friends) {
         return users[msg.sender].friends;
     }
 
-    function sendMessage(address _friend, string memory _msg) external {
+    function sendMessage(address friend_key, string memory _msg) external {
 
         Message memory message = Message(msg.sender, block.timestamp, _msg);
-        bytes32 chatCode = _getChatCode(msg.sender, _friend);
+        bytes32 chatCode = _getChatCode(msg.sender, friend_key);
 
         userMessages[chatCode].push(message);
        
-        emit MessageSent(msg.sender, _friend);
+        emit MessageSent(msg.sender, friend_key);
     }
 
     function checkUserExists(address pubkey) public view returns (bool exists) {
         return bytes(users[pubkey].username).length > 0;
     }
 
+    function getUsername() public view returns (string memory username) {
+        return users[msg.sender].username;
+    }
+
     function getMessages(address friendKey) external view returns (Message[] memory messages) {
-        //bytes32 chatCode = _getChatCode(0x9cFB7df745c81da84489E1D7f2408989159f6990, friendKey);
         bytes32 chatCode = _getChatCode(msg.sender, friendKey);
 
         return userMessages[chatCode];

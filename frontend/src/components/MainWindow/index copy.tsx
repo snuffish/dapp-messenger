@@ -6,7 +6,7 @@ import { getAddress } from "viem";
 
 export const friendKey = signal('0x5BDf39348A9201CFa967707191eF4149a1E83040')
 
-const ChatWindow = () => {
+const MainWindow = () => {
     return (
         <>
             <Container>
@@ -19,4 +19,4 @@ const ChatWindow = () => {
     )
 }
 
-export default ChatWindow
+export default MainWindow
