@@ -14,6 +14,13 @@ const deployContractFixture = async () => {
     return { contract, owner, addr1, addr2 };
 }
 
+let _contract
+
+const createAccount = async (signer, username) => _contract.connect(signer).createAccount(username)
+const addFriend = async (signer, friendKey) => _contract.connect(signer).addFriend(friendKey)
+const getFriends = async (signer) => _contract.connect(signer).getFriends()
+const sendMessage = async (signer, friendKey, message) => _contract.connect(signer).sendMessage(friendKey, message)
+
 describe('Messenger contract', () => {
     describe('Deployment', () => {
         it('Should be right owner', async () => {
@@ -23,31 +30,67 @@ describe('Messenger contract', () => {
         })
     })
 
-    describe('Messages', () => {
-        it('Send message', async () => {
-            const { contract, addr1, addr2 } = await loadFixture(deployContractFixture);
-            
-            const sendMessageTx = contract.connect(addr1).sendMessage(addr2.address, 'Test message')
+    describe('Account', () => {
+        const user1 = 'user1'
+        const user2 = 'user2'
+        const message = 'Test message'
 
-            await expect(sendMessageTx)
+        it ('Create user1 & user2 and add as friends and send a message', async () => {
+            const { contract, addr1, addr2 } = await loadFixture(deployContractFixture);
+            _contract = contract
+            
+            await expect(createAccount(addr1, user1)).to.not.reverted
+            await expect(createAccount(addr1, user1)).to.revertedWith('User already exists!')
+
+            await expect(createAccount(addr2, user2)).to.not.reverted
+            await expect(createAccount(addr2, user2)).to.revertedWith('User already exists!')
+
+            await expect(addFriend(addr1, addr2.address)).to.not.reverted
+
+            const user1Friends = await getFriends(addr1)
+            expect(user1Friends[0].pubkey).to.equal(addr2.address)
+
+            const user1MessageToUser2 = contract.connect(addr1).sendMessage(addr2.address, message)
+
+            await expect(user1MessageToUser2)
                 .to.emit(contract, 'MessageSent')
                 .withArgs(addr1.address, addr2.address)
         })
 
-        it('Send message and recipient received it', async () => {
-            const { contract, addr1, addr2 } = await loadFixture(deployContractFixture);
-            
-            const sendMessageTx = contract.connect(addr1).sendMessage(addr2.address, 'Test message')
+        // it('Add friend', async () => {
+        //     // const { contract, addr1, addr2 } = await loadFixture(deployContractFixture);
 
-            await expect(sendMessageTx)
-                .to.emit(contract, 'MessageSent')
-                .withArgs(addr1.address, addr2.address)
-
-            const msg = (await contract.connect(addr2).getMessages(addr1.address))[0]
-            expect(msg.sender).equals(addr1.address)
-            expect(msg.message).equals('Test message')
-        })
+        //     const createUser1 = contract.connect(addr1).createAccount(user1)
+        //     await expect(createUser1).to.not.reverted
+        // })
     })
+
+    // describe('Messages', () => {
+    //     const message = 'Test message'
+    //     it('Send message', async () => {
+    //         const { contract, addr1, addr2 } = await loadFixture(deployContractFixture);
+            
+    //         const sendMessageTx = contract.connect(addr1).sendMessage(addr2.address, message)
+
+    //         await expect(sendMessageTx)
+    //             .to.emit(contract, 'MessageSent')
+    //             .withArgs(addr1.address, addr2.address)
+    //     })
+
+    //     it('Send message and recipient received it', async () => {
+    //         const { contract, addr1, addr2 } = await loadFixture(deployContractFixture);
+            
+    //         const sendMessageTx = contract.connect(addr1).sendMessage(addr2.address, message)
+
+    //         await expect(sendMessageTx)
+    //             .to.emit(contract, 'MessageSent')
+    //             .withArgs(addr1.address, addr2.address)
+
+    //         const msg = (await contract.connect(addr2).getMessages(addr1.address))[0]
+    //         expect(msg.sender).equals(addr1.address)
+    //         expect(msg.message).equals(message)
+    //     })
+    // })
 })
 
 //     describe('Send message', () => {

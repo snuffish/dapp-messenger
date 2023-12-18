@@ -3,7 +3,7 @@ import contractAddress from '../frontend/src/contracts/contract-address.json'
 
 task('getMessages', 'Get messages')
 .setAction(async () => {
-    const contract = await hre.viem.getContractAt('Messenger', contractAddress.Messenger)
+    const contract = await hre.viem.getContractAt('Messenger', contractAddress.MessengerAddress)
 
     console.log(await contract.read.getMessages())
 })
@@ -18,10 +18,11 @@ task('getMessages', 'Get messages')
 //     // console.log(await contract.read.sendMessage(to, message))
 // })
 
-task('friends', async () => {
-    const contract = await hre.viem.getContractAt('Friends', contractAddress.Friends)
-    console.log(await contract.read.getName())
-})
+// task('friends', async () => {
+//     const contract = await hre.viem.getContractAt('Friends', contractAddress.Friends)
+//     console.log(await contract.read.getName())
+// })
+
 
 
 

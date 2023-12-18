@@ -5,13 +5,13 @@ pragma solidity ^0.8.9;
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 
 struct User {
-    string name;
+    string username;
     Friend[] friends;
 }
 
 struct Friend {
     address pubkey;
-    string name;
+    string username;
 }
 
 struct Message {
@@ -28,18 +28,43 @@ contract Messenger is Ownable {
 
     constructor() Ownable(msg.sender) { }
 
-    function sendMessage(address to, string memory _msg) external {
+    function createAccount(string memory username) external {
+        require(!checkUserExists(msg.sender), "User already exists!");
+        require(bytes(username).length > 0, "Username cannot be empty!");
+        users[msg.sender].username = username;
+    }
+
+    function addFriend(address friend_key) external {
+        require(checkUserExists(msg.sender), "User doesnt exists!");
+        require(checkUserExists(friend_key), "Friend pubkey doesnt exist!");
+        require(msg.sender != friend_key, "Users cannot add themselves as friends!");
+
+        _addFriend(friend_key);
+    }
+
+    function _addFriend(address friend_key) internal {
+        string memory name = users[friend_key].username;
+        Friend memory friend = Friend(friend_key, name);
+        
+        users[msg.sender].friends.push(friend);
+    }
+
+    function getFriends() external view returns (Friend[] memory) {
+        return users[msg.sender].friends;
+    }
+
+    function sendMessage(address _friend, string memory _msg) external {
 
         Message memory message = Message(msg.sender, block.timestamp, _msg);
-        bytes32 chatCode = _getChatCode(msg.sender, to);
+        bytes32 chatCode = _getChatCode(msg.sender, _friend);
 
         userMessages[chatCode].push(message);
        
-        emit MessageSent(msg.sender, to);
+        emit MessageSent(msg.sender, _friend);
     }
 
     function checkUserExists(address pubkey) public view returns (bool exists) {
-        return bytes(users[pubkey].name).length > 0;
+        return bytes(users[pubkey].username).length > 0;
     }
 
     function getMessages(address friendKey) external view returns (Message[] memory messages) {

@@ -24,4 +24,4 @@ contract Message {
     // function getMessage(uint256 id) public view returns (Message memory) {
     //     return messages[id];
     // }
-} 
+}
