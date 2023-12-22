@@ -1,17 +1,30 @@
+import { Box, ChakraProvider, Grid, GridItem, Text } from '@chakra-ui/react'
 import { useAccount } from 'wagmi'
-
-import { Connect } from './components/Connect'
-import MessageInbox from './components/MessageInbox'
-import SendMessage from './components/SendMessage'
-import FriendList from './components/FriendList'
-import Layout from './Layout'
 
 export function App() {
   const { isConnected } = useAccount()
 
   return (
-    <Layout>
-      <h1>Messenger</h1>
-    </Layout>
+    <ChakraProvider>
+      <Text>
+        <Box textAlign='center' fontSize='x-large'>
+          <Grid
+            gap={4}>
+            <GridItem colSpan={8}>
+              <Text>Header</Text>
+            </GridItem>
+            <GridItem colSpan={2}>
+              <Text>LeftGridItem</Text>
+            </GridItem>
+            <GridItem colSpan={4}>
+              <Text>ChatGirdItem</Text>
+            </GridItem>
+            <GridItem colSpan={2}>
+              <Text>RightGridItem</Text>
+            </GridItem>
+          </Grid>
+        </Box>
+      </Text>
+    </ChakraProvider>
   )
 }
