@@ -7,6 +7,7 @@ import { Connect } from "./components/Connect";
 import Account from "./components/Account";
 import MainWindow from "./components/MainWindow";
 import FriendList from "./components/FriendList";
+import { Connected } from "./components/Connected";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -31,7 +32,9 @@ const Layout = ({ children }: any): JSX.Element => {
             </Grid>
             <Grid item xs={3}>
                 <Item>
-                    <FriendList/>
+                    <Connected>
+                        <FriendList/>
+                    </Connected>
                 </Item>
             </Grid>
             <Grid item xs={7}>

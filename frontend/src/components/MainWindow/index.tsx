@@ -1,20 +1,17 @@
+import { useState } from "react"
 import { Address, useAccount, useContractRead } from "wagmi"
-import { useCheckUserExists } from "../../hooks/useCheckUserExists"
-import { Connected } from "../Connected"
-import { useEffect, useState } from "react"
 import { Messenger, contractAddress } from "../../contracts"
+import { Connected } from "../Connected"
 
 const Account = () => {
-    const [username, setUsername] = useState('')
-
-    const { data, isSuccess } = useContractRead({
+    const { data: username, isSuccess } = useContractRead({
         address: contractAddress.MessengerAddress as Address,
         abi: Messenger.abi,
         functionName: 'getUsername'
     })
 
     if (isSuccess) {
-        console.log("TTT=>>>",data)
+        console.log("TTT=>>>",username)
     }
 
 
@@ -25,10 +22,30 @@ const Account = () => {
     )
 }
 
+const AccountExists = ({ children }: any) => {
+    // const { address } = useAccount()
+    // const { data: userExists, isSuccess } = useContractRead({
+    //     address: contractAddress.MessengerAddress as Address,
+    //     abi: Messenger.abi,
+    //     functionName: 'checkUserExists',
+    //     args: [address]
+    // })
+
+    // if (isSuccess) {
+    //     console.log("EXIST=>>",userExists)
+    // }
+
+    return (
+        { ...children }
+    )
+}
+
 const MainWindow = () => {
     return (
         <Connected>
-            <Account/>
+            <AccountExists>
+                <Account/>
+            </AccountExists>
         </Connected>
     )
 }
