@@ -1,5 +1,8 @@
 import { Box, ChakraProvider, Grid, GridItem, Text } from '@chakra-ui/react'
 import { useAccount } from 'wagmi'
+import FriendContainer from './components/FriendContainer'
+import HeaderContainer from './components/HeaderContainer'
+import ChatContainer from './components/ChatContainer'
 
 export function App() {
   const { isConnected } = useAccount()
@@ -11,16 +14,13 @@ export function App() {
           <Grid
             gap={4}>
             <GridItem colSpan={8}>
-              <Text>Header</Text>
+              <HeaderContainer/>
             </GridItem>
             <GridItem colSpan={2}>
-              <Text>LeftGridItem</Text>
+              <FriendContainer/>
             </GridItem>
-            <GridItem colSpan={4}>
-              <Text>ChatGirdItem</Text>
-            </GridItem>
-            <GridItem colSpan={2}>
-              <Text>RightGridItem</Text>
+            <GridItem colSpan={6}>
+              <ChatContainer/>
             </GridItem>
           </Grid>
         </Box>

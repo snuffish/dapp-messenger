@@ -1,4 +1,4 @@
-import { Button } from '@mui/material'
+import { Button } from '@chakra-ui/react'
 import { BaseError } from 'viem'
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
 
