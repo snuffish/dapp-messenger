@@ -2,7 +2,7 @@
 
 This is a messenger chat application/protocol built for the EVM Compatible Blockchains.
 
-Still an early proof-of-concept and and heavlity Work-in-Progress solution.
+Still an early proof-of-concept and and heavily Work-in-Progress solution.
 
 ### Requirements (recommended versions)
 
@@ -21,17 +21,15 @@ Still an early proof-of-concept and and heavlity Work-in-Progress solution.
 * Clone repo: `git clone https://github.com/snuffish/dapp-messenger.git` 
 * `cd dapp-messenger`
 * `nvm use` ==> Now using node v20.8.0 (npm v10.2.1)
-* `nvm install`
+* `nvm install` => Will install dependencies for both `.` & `./app`
 * `npm start` ==> Start the blockchain node
 * `npm test` ==> Run all tests for errors etc before deploying
 * `npm run deploy` ==> Compile and deploy the Project & Contracts on to the chain
 
-#### Setup and run the frontend (Ether.js) dApp Application
+#### Setup and run the app (Ether.js) dApp Application
 
-* `cd frontend`
 * `nvm use` ==>  Now using node v20.8.0 (npm v10.2.1)
-* `nvm install`
-* `npm start` ==> Start the WebBased Ether.js dApp
+* `npm run app` ==> Start the WebBased Ether.js dApp
 
 ----------------------------------------------------------------
 

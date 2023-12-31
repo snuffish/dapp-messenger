@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "This is a (EVM) Blockchain chat/communication software and protocol",
   "scripts": {
+    "postinstall": "cd app && npm install",
     "test": "hardhat test",
     "start": "hardhat node",
-    "frontend": "cd frontend && npm start",
+    "app": "cd app && npm start",
     "deploy": "hardhat run scripts/deploy.ts --network localhost",
     "faucet": "hardhat faucet"
   },

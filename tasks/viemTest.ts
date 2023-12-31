@@ -1,5 +1,5 @@
 // @ts-nocheck
-import contractAddress from '../frontend/src/contracts/contract-address.json'
+import contractAddress from '../app/src/contracts/contract-address.json'
 
 task('getMessages', 'Get messages')
 .setAction(async () => {

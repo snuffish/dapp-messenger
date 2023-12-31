@@ -57,11 +57,11 @@ async function main() {
     deployedContracts.push(deployed)
   }
 
-  saveFrontendFiles(deployedContracts);
+  saveAppFiles(deployedContracts);
 }
 
-function saveFrontendFiles(data: DeployedContract[]) {
-  const contractsDir = path.join(__dirname, "..", "frontend", "src", "contracts");
+function saveAppFiles(data: DeployedContract[]) {
+  const contractsDir = path.join(__dirname, "..", "app", "src", "contracts");
 
   if (!fs.existsSync(contractsDir)) {
     fs.mkdirSync(contractsDir);

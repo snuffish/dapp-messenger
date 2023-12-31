@@ -1,5 +1,5 @@
 // @ts-nocheck
-import contractAddress from '../frontend/src/contracts/contract-address.json'
+import contractAddress from '../app/src/contracts/contract-address.json'
 
 task('accounts', 'Print list of accounts', async () => {
     const accounts = await ethers.getSigners()

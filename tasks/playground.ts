@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { task } from "hardhat/config"
-import { contractAddress } from "../frontend/src/contracts"
+import { contractAddress } from "../app/src/contracts"
 
 task('test1')
     .setAction(async () => {
