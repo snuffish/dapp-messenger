@@ -17,12 +17,13 @@
     "useDefineForClassFields": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [".src/*"],
-      "components/*": ["./src/components/*"],
+      "@/*": ["./*"],
+      "components/*": ["./src/components/*", "./src/shadcn/components/*"],
+      "lib/*": ["./src/lib/*"],
       "contracts/*": ["./src/contracts/*"],
       "hooks/*": ["./src/hooks/*"],
       "css/*": ["./src/css/*"]
     }
   },
-  "include": ["./src"]
+  "include": ["./src", "@backup"]
 }
