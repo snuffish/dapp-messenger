@@ -1,7 +1,36 @@
 import './css/index.css'
-import { Box, Center, ChakraProvider } from '@chakra-ui/react'
-import { useAccount } from 'wagmi'
+import { Box, Button, Center, ChakraProvider } from '@chakra-ui/react'
+import { useAccount, useConnect, useDisconnect } from 'wagmi'
 import ChatComponent from './components/Chat'
+
+const Login = () => {
+  const { isConnected, connector, address } = useAccount()
+  const { disconnect } = useDisconnect()
+  const { connect, connectors, isLoading } = useConnect()
+
+  const connectorId = connectors.filter(x => x.ready && x.id !== connector?.id).pop()
+  
+  console.log("CONN => ", connectors)
+
+  if (!isConnected) {
+    return (
+      <>
+        <Button onClick={() => connect({ connector: connectorId })}>
+          {/* {isLoading ? } */}
+        </Button>
+      </>
+    )
+  }
+
+  if (isConnected) {
+    return (
+      <>
+        Address: {address}<br/>
+        <Button onClick={() => disconnect()}>Disconnect</Button>
+      </>
+    )
+  }
+}
 
 export function App() {
   const { isConnected } = useAccount()
@@ -10,9 +39,10 @@ export function App() {
     <ChakraProvider>
       <Center>
         <Box width='500px' borderWidth={1}>
-          <ChatComponent
-            username='Mandiz'
-          />
+          <Login/>
+          {/* <ChatComponent
+            username='Lisa'
+          /> */}
         </Box>
       </Center>
 
