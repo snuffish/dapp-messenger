@@ -1,9 +1,9 @@
 import './css/index.css'
 import { Box, Button, Center, ChakraProvider, Flex, Grid, GridItem, Image, Input, Text } from '@chakra-ui/react'
 import { useAccount } from 'wagmi'
-import FriendContainer from './components/FriendContainer'
-import HeaderContainer from './components/HeaderContainer'
-import ChatContainer from './components/ChatContainer'
+import FriendContainer from 'components/FriendContainer'
+import HeaderContainer from 'components/HeaderContainer'
+import ChatContainer from 'components/ChatContainer'
 import { useRef, useState } from 'react'
 
 type MessageProps = {

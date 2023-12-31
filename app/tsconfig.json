@@ -14,7 +14,15 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext",
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [".src/*"],
+      "components/*": ["./src/components/*"],
+      "contracts/*": ["./src/contracts/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "css/*": ["./src/css/*"]
+    }
   },
   "include": ["./src"]
 }
