@@ -1,5 +1,5 @@
 import './css/index.css'
-import { Box, Button, Center, ChakraProvider } from '@chakra-ui/react'
+import { Box, Button, Center, ChakraProvider, Flex, HStack, Heading, Image, Text, VStack } from '@chakra-ui/react'
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
 import ChatComponent from './components/Chat'
 
@@ -9,27 +9,44 @@ const Login = () => {
   const { connect, connectors, isLoading } = useConnect()
 
   const connectorId = connectors.filter(x => x.ready && x.id !== connector?.id).pop()
-  
-  console.log("CONN => ", connectors)
 
   if (!isConnected) {
     return (
-      <>
-        <Button onClick={() => connect({ connector: connectorId })}>
-          {/* {isLoading ? } */}
+      <VStack
+        spacing={5}
+      >
+        <HStack>
+          <Image
+            src='https://cdn-icons-png.flaticon.com/512/5910/5910054.png'
+            boxSize='100px'
+          />
+          <Heading>Chain Messenger</Heading>
+        </HStack>
+        <Text
+          textAlign='center'
+          maxWidth='80%'
+        >
+          Secure Messaging between peer-to-peer users using Decentralized Blockchain Technology.
+        </Text>
+        <Text>Just <b>Connect</b> with your wallet below to begin the madness!</Text>
+        <Button
+          onClick={() => connect({ connector: connectorId })}
+          isLoading={isLoading}
+          bgColor='blue.300'
+          maxWidth='100px'
+        >
+          Connect
         </Button>
-      </>
+      </VStack>
     )
   }
 
-  if (isConnected) {
-    return (
-      <>
-        Address: {address}<br/>
-        <Button onClick={() => disconnect()}>Disconnect</Button>
-      </>
-    )
-  }
+  return (
+    <>
+      Address: {address}<br />
+      <Button onClick={() => disconnect()}>Disconnect</Button>
+    </>
+  )
 }
 
 export function App() {
@@ -38,8 +55,12 @@ export function App() {
   return (
     <ChakraProvider>
       <Center>
-        <Box width='500px' borderWidth={1}>
-          <Login/>
+        <Box
+          className='appContainer'
+          borderWidth={1}
+          borderRadius={5}
+        >
+          <Login />
           {/* <ChatComponent
             username='Lisa'
           /> */}
