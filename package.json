@@ -5,6 +5,7 @@
   "scripts": {
     "test": "hardhat test",
     "start": "hardhat node",
+    "frontend": "cd frontend && npm start",
     "deploy": "hardhat run scripts/deploy.ts --network localhost",
     "faucet": "hardhat faucet"
   },
