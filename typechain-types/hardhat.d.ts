@@ -17,21 +17,61 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Ownable__factory>;
     getContractFactory(
-      name: "Application",
+      name: "IERC1155Errors",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.Application__factory>;
+    ): Promise<Contracts.IERC1155Errors__factory>;
     getContractFactory(
-      name: "Constants",
+      name: "IERC20Errors",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.Constants__factory>;
+    ): Promise<Contracts.IERC20Errors__factory>;
     getContractFactory(
-      name: "Friends",
+      name: "IERC721Errors",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.Friends__factory>;
+    ): Promise<Contracts.IERC721Errors__factory>;
     getContractFactory(
-      name: "Message",
+      name: "ERC721",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.Message__factory>;
+    ): Promise<Contracts.ERC721__factory>;
+    getContractFactory(
+      name: "IERC721Metadata",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC721Metadata__factory>;
+    getContractFactory(
+      name: "IERC721",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC721__factory>;
+    getContractFactory(
+      name: "IERC721Receiver",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC721Receiver__factory>;
+    getContractFactory(
+      name: "ERC165",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC165__factory>;
+    getContractFactory(
+      name: "IERC165",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC165__factory>;
+    getContractFactory(
+      name: "Math",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Math__factory>;
+    getContractFactory(
+      name: "Strings",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Strings__factory>;
+    getContractFactory(
+      name: "IERC721Soulbound",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC721Soulbound__factory>;
+    getContractFactory(
+      name: "IMessage",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IMessage__factory>;
+    getContractFactory(
+      name: "MessageNFT",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.MessageNFT__factory>;
     getContractFactory(
       name: "Messenger",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -47,25 +87,75 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Ownable>;
     getContractAt(
-      name: "Application",
+      name: "IERC1155Errors",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.Application>;
+    ): Promise<Contracts.IERC1155Errors>;
     getContractAt(
-      name: "Constants",
+      name: "IERC20Errors",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.Constants>;
+    ): Promise<Contracts.IERC20Errors>;
     getContractAt(
-      name: "Friends",
+      name: "IERC721Errors",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.Friends>;
+    ): Promise<Contracts.IERC721Errors>;
     getContractAt(
-      name: "Message",
+      name: "ERC721",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.Message>;
+    ): Promise<Contracts.ERC721>;
+    getContractAt(
+      name: "IERC721Metadata",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC721Metadata>;
+    getContractAt(
+      name: "IERC721",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC721>;
+    getContractAt(
+      name: "IERC721Receiver",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC721Receiver>;
+    getContractAt(
+      name: "ERC165",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC165>;
+    getContractAt(
+      name: "IERC165",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC165>;
+    getContractAt(
+      name: "Math",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Math>;
+    getContractAt(
+      name: "Strings",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Strings>;
+    getContractAt(
+      name: "IERC721Soulbound",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IERC721Soulbound>;
+    getContractAt(
+      name: "IMessage",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IMessage>;
+    getContractAt(
+      name: "MessageNFT",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.MessageNFT>;
     getContractAt(
       name: "Messenger",
       address: string,
